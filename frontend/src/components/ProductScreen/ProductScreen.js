@@ -2,7 +2,7 @@ import './ProductScreen.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../../redux/actions/productAction';
-// import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart } from '../../redux/actions/cartActions';
 
 const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1);
@@ -15,6 +15,11 @@ const ProductScreen = ({ match, history }) => {
       dispatch(getProductDetails(match.params.id));
     }
   }, [dispatch, product, match]);
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(product._id, qty));
+    history.push('/cart');
+  };
 
   return (
     <div className='productscreen'>
@@ -57,7 +62,9 @@ const ProductScreen = ({ match, history }) => {
                 </select>
               </p>
               <p>
-                <button type='button'>Add To Cart</button>
+                <button type='button' onClick={addToCartHandler}>
+                  Add To Cart
+                </button>
               </p>
             </div>
           </div>
