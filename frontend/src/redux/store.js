@@ -15,6 +15,7 @@ const reducer = combineReducers({
 
 const middleware = [thunk];
 
+// check if cart has any items in local storage
 const cartFromLocalStorage = localStorage.getItem('cart')
   ? JSON.parse(localStorage.getItem('cart'))
   : [];

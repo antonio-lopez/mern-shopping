@@ -3,6 +3,7 @@ import CartItem from '../CartItem/CartItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+import { formatter } from '../../formatter';
 
 const CartScreen = () => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const CartScreen = () => {
       <div className='cartscreen__right'>
         <div className='cartscreen__info'>
           <p>Subtotal ({getCartCount()}) items</p>
-          <p>${getCartSubtotal().toFixed(2)}</p>
+          <p>{formatter.format(getCartSubtotal())}</p>
         </div>
         <div>
           <button>Proceed To Checkout</button>

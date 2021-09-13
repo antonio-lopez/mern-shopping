@@ -1,8 +1,10 @@
 import * as actionTypes from '../constants/cartConstants';
 import axios from 'axios';
 
+const url = 'https://al-mern-shopping.herokuapp.com';
+
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`/api/products/${id}`);
+  const { data } = await axios.get(`${url}/api/products/${id}`);
 
   dispatch({
     type: actionTypes.ADD_TO_CART,

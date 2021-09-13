@@ -1,5 +1,6 @@
 import './CartItem.css';
 import { Link } from 'react-router-dom';
+import { formatter } from '../../formatter';
 
 const CartItem = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
   return (
@@ -12,7 +13,7 @@ const CartItem = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
         <p>{item.name}</p>
       </Link>
 
-      <p className='cartitem__price'>${item.price}</p>
+      <p className='cartitem__price'>{formatter.format(item.price)}</p>
 
       <select
         className='cartitem__select'

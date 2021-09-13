@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails } from '../../redux/actions/productAction';
 import { addToCart } from '../../redux/actions/cartActions';
+import { formatter } from '../../formatter';
 
 const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1);
@@ -36,14 +37,14 @@ const ProductScreen = ({ match, history }) => {
 
             <div className='left__info'>
               <p className='left__name'>{product.name}</p>
-              <p>${product.price}</p>
+              <p>{formatter.format(product.price)}</p>
               <p>Desciption: {product.description}</p>
             </div>
           </div>
           <div className='productscreen__right'>
             <div className='right__info'>
               <p>
-                Price:<span>${product.price}</span>
+                Price:<span>{formatter.format(product.price)}</span>
               </p>
               <p>
                 Status:{' '}
